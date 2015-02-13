@@ -106,4 +106,25 @@ public class LogAnalyzer
         
         return horaMasOcupada;
     }
+    
+    /**
+     * Metodo  que devuelva la hora a la que el servidor estuvo menos sobrecargado. 
+     */
+    public int quietestHour()
+    {
+        int horaMenosSobrecargado= 0;  //almacena la hora a la cual hay menos accesos registrados
+        int temp = hourCounts[0];      //almacenamos los accesos del primer objeto de la coleccion
+        for(int hour= 0; hour<hourCounts.length;hour++)
+        {
+            
+            if(temp> hourCounts[hour])   //si la cantidad de accesos registrados almacenada es
+                                         //mayor que los accesos de la hora comparada
+            {
+                horaMenosSobrecargado = hour;
+                temp = hourCounts[hour];
+            }
+            
+        }
+        return horaMenosSobrecargado;
+    }
 }
