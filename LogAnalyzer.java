@@ -70,4 +70,20 @@ public class LogAnalyzer
     {
         reader.printData();
     }
+    /**
+     * Metodo que devuelve el número total de accesos al servidor web
+     * registrados en el archivo de log. 
+     */
+    public int numberOfAccesses()
+    {
+        int total = 0;    //variable para almacenar el total de registros
+        
+        for(int hour= 0;hour<hourCounts.length;hour++) //recorremos la coleccion  
+        {
+            total += hourCounts[hour];   //sumamos al total la cantidad de registros
+                                         //que hay en cada hora
+        }
+        
+        return total;    
+    }
 }
