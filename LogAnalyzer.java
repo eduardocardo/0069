@@ -120,11 +120,31 @@ public class LogAnalyzer
             if(temp> hourCounts[hour])   //si la cantidad de accesos registrados almacenada es
                                          //mayor que los accesos de la hora comparada
             {
-                horaMenosSobrecargado = hour;
-                temp = hourCounts[hour];
+                horaMenosSobrecargado = hour;   //almacenamos la hora
+                temp = hourCounts[hour];        //almacenamos la cantidad con menor accesos
             }
             
         }
         return horaMenosSobrecargado;
+    }
+    
+    /**
+     * Metodo que calcule el período de dos horas consecutivas con más carga del día 
+     * y devuelva un entero con la primera hora de dicho periodo
+     */
+    public int periodoMasSobrecargado()
+    {
+        int total = 0; // almacena la suma de accesos de dos horas consecutivas
+        int masSobrecargado = 0;    //indica el periodo mas sobrecargado
+        
+        for(int hour =0 ; hour<(hourCounts.length -1); hour++)
+        {
+            if(total < hourCounts[hour]+hourCounts[hour+1])
+            {
+                masSobrecargado= hour;
+                total = hourCounts[hour] + hourCounts[hour+1];
+            }
+        }
+        return masSobrecargado;
     }
 }
