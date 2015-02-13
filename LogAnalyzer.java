@@ -86,4 +86,24 @@ public class LogAnalyzer
         
         return total;    
     }
+    
+    /**
+     * Metodo que devuelva en qué hora el servidor tuvo que responder a más peticiones.
+     */
+    public int busiestHour()
+    {
+        int temp= 0;    //almacena el numero de accesos registrados
+        int horaMasOcupada = 0;   //almancena la hora a la cual hay mas accesos al servidor
+        for(int hour=0; hour<hourCounts.length; hour++)  //recorremos la coleccion
+        {
+                 if(temp< hourCounts[hour])  //si en la hora analizada hay mas accesos que los que
+                                             // tenemos almacenados
+                 {
+                     horaMasOcupada= hour;   //guardamos la hora en la que hay mas accesos
+                     temp= hourCounts[hour];  //almacenamos el mayor numero de accesos registrados
+                 }
+        }
+        
+        return horaMasOcupada;
+    }
 }
